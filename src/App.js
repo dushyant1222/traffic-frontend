@@ -192,8 +192,7 @@ const handleVIP = (lane) => {
             </button>
           </div>
 
-          {/* WEBCAM */}
-          <button onClick={handleWebcamTrigger}>Start YOLO Webcam</button>
+          
 
           {/* FEATURE CARDS */}
           <div className="features">
@@ -276,7 +275,7 @@ const handleVIP = (lane) => {
 
           <video ref={videoRef} autoPlay muted />
 
-          <button onClick={startWebcam}>Start Live View</button>
+         
 
           {/* STATS */}
           <div className="stats">
