@@ -100,12 +100,7 @@ const handleVIP = (lane) => {
   };
 
   // ---------------- WEBCAM ----------------
-  const startWebcam = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    videoRef.current.srcObject = stream;
-    setStreaming(true);
-  };
-
+ 
  
   // ---------------- 🚑 EMERGENCY FEATURE ----------------
   const handleEmergency = () => {
