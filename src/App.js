@@ -81,23 +81,36 @@ const handleVIP = (lane) => {
   };
 
   // ---------------- VIDEO ----------------
-  const handleVideoUpload = async () => {
-    if (!videoFile) return alert("Upload video");
+ const handleVideoUpload = async () => {
+  if (!videoFile) return alert("Please select a video");
 
-    setVideoUploading(true);
+  setVideoUploading(true);
 
-    const formData = new FormData();
-    formData.append("file", videoFile);
+  const formData = new FormData();
+  formData.append("file", videoFile);
 
-    try {
-      await axios.post(`${ML}/detect-video`, formData);
-      alert("Video running in OpenCV");
-    } catch {
-      alert("Video upload failed");
-    }
+  try {
+    const res = await axios.post(
+      `${ML}/detect-video`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
-    setVideoUploading(false);
-  };
+    console.log("VIDEO RESPONSE:", res.data);
+
+    alert(`Vehicles detected: ${res.data.vehicle_count}`);
+
+  } catch (err) {
+    console.error("VIDEO ERROR:", err);
+    alert("Video upload failed");
+  }
+
+  setVideoUploading(false);
+};
 
   // ---------------- WEBCAM ----------------
  
